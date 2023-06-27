@@ -1,0 +1,150 @@
+﻿@using deTestMVC_CORE_bookdata.ViewModels.BookData
+@model BookDataCollection
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-3">
+    <form asp-controller="home" method="post">
+        <h3 >圖書維護</h3>
+        <label>書名</label>
+        <input type="text" class=" form-control" name="BookName" value="@(TempData["bookName"] ?? string.Empty)" /><br />
+        <label>圖書類別</label>
+        <select asp-for="bdViewModel.BookClassId" asp-items="Model.dropListBookClassID" name="BookClassId" class=" form-control"></select>
+        
+        <label>借閱人</label>
+        <select asp-for="bdViewModel.BookKeeper" asp-items="Model.dropDownListKepper" name="BookKeeper" class=" form-control"></select>
+
+        <label>借閱狀態</label>
+        <select asp-for="bdViewModel.BookStatus" asp-items="Model.dropListBookStatusID" name="BookStatus" class=" form-control"></select>
+
+       
+
+        <input type="submit" class="btn btn-primary" value="查詢" asp-action="search" />
+        <input type="submit" class="btn btn-outline-warning" value="清除" asp-action="clear" />
+        <input type="submit" class="btn btn-primary" value="新增" asp-action="add" />
+
+    </form>
+</div>
+
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            @*<th>
+            @Html.DisplayNameFor(model => model.bdViewModel.BookClassId)
+            </th>*@
+            <th>
+                <a asp-page=@Url.Content("~/home/index") asp-route-sortOrder="@Model.ClassIdSort">
+                    @Html.DisplayNameFor(model => model.bdViewModel.BookClassId)
+                </a>
+            </th>
+            <th>
+                <a asp-page=@Url.Content("~/home/index") asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.bdViewModel.BookName)
+                </a>
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.bdViewModel.BookAuthor)
+            </th>*@
+            <th>
+                <a asp-page=@Url.Content("~/home/index") asp-route-sortOrder="@Model.BoughtDateSort">
+                    @Html.DisplayNameFor(model => model.bdViewModel.BookBoughtDate)
+                </a>
+            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.bdViewModel.BookPublisher)
+            </th>*@
+            @*  <th>
+            @Html.DisplayNameFor(model => model.bdViewModel.BookNote)
+            </th>*@
+            <th>
+                <a asp-page=@Url.Content("~/home/index") asp-route-sortOrder="@Model.StatusSort">
+                    @Html.DisplayNameFor(model => model.bdViewModel.BookStatus)
+                </a>
+            </th>
+            <th>
+                <a asp-page=@Url.Content("~/home/index") asp-route-sortOrder="@Model.KeeperSort">
+                    @Html.DisplayNameFor(model => model.bdViewModel.BookKeeper)
+                </a>
+            </th>
+            @* <th>
+            @Html.DisplayNameFor(model => model.bdViewModel.BookAmount)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.bdViewModel.CreateDate)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.bdViewModel.CreateUser)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.bdViewModel.ModifyDate)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.bdViewModel.ModifyUser)
+            </th>*@
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.cBookDatumViewModels)
+        {
+            <tr>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.BookId)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookClassId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookName)
+                </td>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.BookAuthor)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookBoughtDate)
+                </td>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.BookPublisher)
+            </td>*@
+                @*  <td>
+            @Html.DisplayFor(modelItem => item.BookNote)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookKeeper)
+                </td>
+                @* <td>
+            @Html.DisplayFor(modelItem => item.BookAmount)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.CreateUser)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.ModifyDate)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.ModifyUser)
+            </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {  id=item.BookId  }, new {@class = "btn btn-warning"})
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.BookId },new {@class = "btn btn-danger"})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

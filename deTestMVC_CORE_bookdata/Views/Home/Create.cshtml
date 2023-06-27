@@ -1,0 +1,98 @@
+﻿@using deTestMVC_CORE_bookdata.ViewModels.BookData
+@model BookDataCollection
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>CBookDatumViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookName" class="control-label"></label>
+                <input asp-for="bdViewModel.BookName" class="form-control" />
+                <span asp-validation-for="bdViewModel.BookName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookClassId" class="control-label"></label>
+                <select asp-for="bdViewModel.BookClassId" asp-items="Model.dropListBookClassID" class="form-control form-select shadow-none  border-top"></select>
+                <span asp-validation-for="bdViewModel.BookClassId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookAuthor" class="control-label"></label>
+                <input asp-for="bdViewModel.BookAuthor" class="form-control" />
+                <span asp-validation-for="bdViewModel.BookAuthor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookBoughtDate" class="control-label"></label>
+                <input asp-for="bdViewModel.BookBoughtDate" class="form-control" />
+                <span asp-validation-for="bdViewModel.BookBoughtDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookPublisher" class="control-label"></label>
+                <input asp-for="bdViewModel.BookPublisher" class="form-control" />
+                <span asp-validation-for="bdViewModel.BookPublisher" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookNote" class="control-label"></label>
+                <input asp-for="bdViewModel.BookNote" class="form-control" />
+                <span asp-validation-for="bdViewModel.BookNote" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookStatus" class="control-label"></label>
+                <select asp-for="bdViewModel.BookStatus" asp-items="Model.dropListBookStatusID" class="form-control form-select shadow-none  border-top"></select>
+                <span asp-validation-for="bdViewModel.BookStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookKeeper" class="control-label"></label>
+                <input asp-for="bdViewModel.BookKeeper" class="form-control" />
+                <span asp-validation-for="bdViewModel.BookKeeper" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.BookAmount" class="control-label"></label>
+                <input asp-for="bdViewModel.BookAmount" class="form-control" />
+                <span asp-validation-for="bdViewModel.BookAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.CreateDate" class="control-label"></label>
+                <input asp-for="bdViewModel.CreateDate" class="form-control" />
+                <span asp-validation-for="bdViewModel.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.CreateUser" class="control-label"></label>
+                <input asp-for="bdViewModel.CreateUser" class="form-control" />
+                <span asp-validation-for="bdViewModel.CreateUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.ModifyDate" class="control-label"></label>
+                <input asp-for="bdViewModel.ModifyDate" class="form-control" />
+                <span asp-validation-for="bdViewModel.ModifyDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bdViewModel.ModifyUser" class="control-label"></label>
+                <input asp-for="bdViewModel.ModifyUser" class="form-control" />
+                <span asp-validation-for="bdViewModel.ModifyUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
